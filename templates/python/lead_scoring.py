@@ -13,7 +13,7 @@ class LeadScorer:
     """AI-powered lead scoring based on behavior and intent signals"""
     
     def __init__(self):
-        self scoring_rules = {
+        self.scoring_rules = {
             "email_engagement": {
                 "opened_email": 10,
                 "clicked_link": 20,
