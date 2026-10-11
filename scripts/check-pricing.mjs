@@ -1,9 +1,13 @@
-// Pricing consistency: one catalogue, three places.
+// Pricing consistency: this repo's generator vs. this repo's rendered site.
 //
-// Prices live in scripts/gen-suite.py PRODUCTS (mirroring the public site).
-// They are repeated in website/suite.html (generated) and products/SUITE.md
-// (hand-written). A buyer who sees two prices stops believing either, so this
-// fails when any price in the generator is missing from both documents.
+// Prices live in scripts/gen-suite.py PRODUCTS (mirroring the public site) and
+// are repeated in website/suite.html (generated). A buyer who sees two prices
+// stops believing either, so this fails when any price in the generator is
+// missing from the rendered page.
+//
+// The pre-split umbrella also kept a hand-written ../SUITE.md that named every
+// Abetworks product; that file was cross-repo marketing, not this app, so it
+// is not checked here anymore.
 //
 // Run: node scripts/check-pricing.mjs — must report 0 failed.
 import { readFileSync } from "node:fs";
@@ -21,11 +25,9 @@ const prices = [...generator.matchAll(/"price":\s*"([^"]+)"/g)].map((m) => m[1])
 check("the generator names prices", prices.length > 0, `${prices.length} found`);
 
 const suiteHtml = readFileSync(join(ROOT, "website", "suite.html"), "utf8");
-const portfolio = readFileSync(join(ROOT, "..", "SUITE.md"), "utf8");
 
 for (const price of prices) {
   check(`suite.html shows ${price}`, suiteHtml.includes(price));
-  check(`SUITE.md shows ${price}`, portfolio.includes(price));
 }
 
 for (const label of failures) console.log(`FAIL  ${label}`);
