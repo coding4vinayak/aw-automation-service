@@ -1,5 +1,8 @@
 # AutoFlow - Complete Automation Business
 
+![CI](https://github.com/coding4vinayak/aw-automation-service/actions/workflows/ci.yml/badge.svg)
+
+
 Ready-to-sell automation service business with website, templates, and marketing materials.
 
 ## Quick Start
