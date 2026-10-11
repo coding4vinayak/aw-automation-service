@@ -1,0 +1,16 @@
+# Render service for aw-automation-service (a Python-served static site plus
+# scripts). The site itself is static HTML; serve.py handles routing.
+services:
+  - type: web
+    name: aw-automation-service
+    runtime: python
+    plan: free
+    region: singapore
+    healthCheckPath: /
+    buildCommand: python3 -c "import http.server, os; print('stdlib ok')"
+    startCommand: python3 serve.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: PORT
+        value: "10000"     # Render's assigned port; serve.py honours $PORT

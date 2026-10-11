@@ -1,0 +1,22 @@
+name: CI
+on:
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - name: pricing + buy-path + ui (static analysis, no deps)
+        run: |
+          node scripts/check-pricing.mjs
+          node scripts/check-buy-path.mjs
+          node scripts/check-ui.mjs
+      - name: DOM probe (installs jsdom locally)
+        run: |
+          npm install --no-save jsdom
+          node scripts/check-buy-path.dom.mjs
+      - name: python syntax check
+        run: python3 -m compileall -q .
