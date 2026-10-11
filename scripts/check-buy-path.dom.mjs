@@ -2,11 +2,12 @@
 // assert statically: that filling a form and pressing submit actually produces a
 // panel with a correct send link.
 //
-// Needs jsdom. This repository has no package.json (it is a static site), so run it
-// against any checkout that has one installed. On this machine NuCRM keeps one:
+// Needs jsdom. This repository has no package.json (it is a static site), so
+// run it against any environment where jsdom resolves. Two ways:
 //
-//   NODE_PATH=/srv/work/longhorizon-target/node_modules \
-//     node scripts/check-buy-path.dom.mjs
+//   npm i -g jsdom                              # then: node scripts/check-buy-path.dom.mjs
+//   AUTOFLOW_JSDOM=/path/to/node_modules/jsdom \
+//     node scripts/check-buy-path.dom.mjs       # explicit
 //
 // jsdom cannot navigate, so a mailto:/wa.me: open surfaces as
 // "Not implemented: navigation" on the virtual console. That is useful rather than a
@@ -25,10 +26,10 @@ let JSDOM, VirtualConsole;
 try {
   ({ JSDOM, VirtualConsole } = require("jsdom"));
 } catch {
-  const fallback =
-    process.env.AUTOFLOW_JSDOM || "/srv/work/longhorizon-target/node_modules/jsdom";
+  const explicit = process.env.AUTOFLOW_JSDOM;
   try {
-    ({ JSDOM, VirtualConsole } = require(fallback));
+    if (!explicit) throw new Error("no AUTOFLOW_JSDOM and jsdom is not resolvable");
+    ({ JSDOM, VirtualConsole } = require(explicit));
   } catch {
     console.error(
       `\nThis probe needs jsdom. Install it, or point AUTOFLOW_JSDOM at a copy,\n` +
