@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Automation Audit | AutoFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); }
+        .checklist-item { transition: all 0.2s ease; }
+        .checklist-item:hover { background: #f8fafc; }
+        input[type="checkbox"] { accent-color: #6366f1; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="inline-block bg-white/20 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                🎁 FREE DOWNLOAD
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                Automation Audit Checklist
+            </h1>
+            <p class="text-xl text-white/90">
+                Find out which parts of your business can be automated. Takes 5 minutes.
+            </p>
+        </div>
+    </header>
+
+    <!-- Checklist -->
+    <main class="max-w-3xl mx-auto px-4 py-12">
+        
+        <!-- Progress -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-8">
+            <div class="flex justify-between items-center mb-2">
+                <span class="font-semibold">Your Progress</span>
+                <span id="progress-text" class="text-indigo-600 font-bold">0/25</span>
+            </div>
+            <div class="h-3 bg-gray-100 rounded-full overflow-hidden">
+                <div id="progress-bar" class="h-full gradient-bg transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Section 1: Lead Capture -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-2xl">🎯</span> Lead Capture
+            </h2>
+            <div class="space-y-3">
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="leads">
+                    <span>I have a website with a contact form</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="leads">
+                    <span>Form submissions go to my email</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="leads">
+                    <span>I follow up with every lead within 24 hours</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="leads">
+                    <span>Leads are automatically added to a spreadsheet/CRM</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="leads">
+                    <span>I track where my leads come from</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Section 2: Email -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-2xl">📧</span> Email Marketing
+            </h2>
+            <div class="space-y-3">
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="email">
+                    <span>New leads get an automatic welcome email</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="email">
+                    <span>I have a follow-up email sequence</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="email">
+                    <span>I send regular newsletters/updates</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="email">
+                    <span>Emails are personalized (not generic)</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="email">
+                    <span>I track email open/click rates</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Section 3: Appointments -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-2xl">📅</span> Appointments
+            </h2>
+            <div class="space-y-3">
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="appointments">
+                    <span>Clients can book online (not just phone)</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="appointments">
+                    <span>Automatic reminders sent before appointments</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="appointments">
+                    <span>Follow-up email sent after appointments</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="appointments">
+                    <span>My no-show rate is under 10%</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="appointments">
+                    <span>Clients can reschedule online</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Section 4: Payments -->
+        <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-2xl">💰</span> Payments & Invoicing
+            </h2>
+            <div class="space-y-3">
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="payments">
+                    <span>Invoices are sent automatically</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="payments">
+                    <span>Payment reminders go out automatically</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="payments">
+                    <span>Payment confirmations are sent automatically</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="payments">
+                    <span>My average payment time is under 7 days</span>
+                </label>
+                <label class="checklist-item flex items-center gap-3 p-3 rounded-lg cursor-pointer">
+                    <input type="checkbox" class="w-5 h-5 rounded" data-category="payments">
+                    <span>I know my outstanding invoices at any time</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="bg-white rounded-2xl shadow-lg p-8 mt-8 hidden">
+            <h2 class="text-2xl font-bold mb-6 text-center">Your Automation Score</h2>
+            
+            <div class="grid grid-cols-2 gap-6 mb-8">
+                <div class="text-center p-6 bg-gray-50 rounded-xl">
+                    <div id="score-total" class="text-5xl font-extrabold text-indigo-600 mb-2">0%</div>
+                    <div class="text-gray-600">Overall Score</div>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-xl">
+                    <div id="hours-wasted" class="text-5xl font-extrabold text-red-500 mb-2">0</div>
+                    <div class="text-gray-600">Hours Wasted/Week</div>
+                </div>
+            </div>
+
+            <div class="space-y-4 mb-8">
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span>Lead Capture</span>
+                        <span id="leads-score" class="font-medium">0%</span>
+                    </div>
+                    <div class="h-2 bg-gray-100 rounded-full">
+                        <div id="leads-bar" class="h-2 bg-green-500 rounded-full transition-all" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span>Email Marketing</span>
+                        <span id="email-score" class="font-medium">0%</span>
+                    </div>
+                    <div class="h-2 bg-gray-100 rounded-full">
+                        <div id="email-bar" class="h-2 bg-blue-500 rounded-full transition-all" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span>Appointments</span>
+                        <span id="appointments-score" class="font-medium">0%</span>
+                    </div>
+                    <div class="h-2 bg-gray-100 rounded-full">
+                        <div id="appointments-bar" class="h-2 bg-purple-500 rounded-full transition-all" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span>Payments</span>
+                        <span id="payments-score" class="font-medium">0%</span>
+                    </div>
+                    <div class="h-2 bg-gray-100 rounded-full">
+                        <div id="payments-bar" class="h-2 bg-orange-500 rounded-full transition-all" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="recommendation" class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 mb-6">
+                <h3 class="font-bold text-indigo-800 mb-2">💡 Recommendation</h3>
+                <p id="recommendation-text" class="text-indigo-700"></p>
+            </div>
+
+            <div class="text-center">
+                <a href="booking.html" class="inline-block gradient-bg text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition">
+                    Get Your Free Automation Consultation →
+                </a>
+            </div>
+        </div>
+
+        <!-- Lead Capture Form -->
+        <div id="lead-form" class="bg-white rounded-2xl shadow-lg p-8 mt-8 hidden">
+            <h2 class="text-2xl font-bold mb-4 text-center">Get Your Free Report</h2>
+            <p class="text-gray-600 text-center mb-6">Enter your details to receive your personalized automation audit report.</p>
+            <form id="audit-form">
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="audit-first-name">First Name *</label>
+                        <input type="text" name="first_name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" id="audit-first-name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="audit-last-name">Last Name *</label>
+                        <input type="text" name="last_name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" id="audit-last-name">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="audit-email">Email *</label>
+                    <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" id="audit-email">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="audit-business-name">Business Name</label>
+                    <input type="text" name="business" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" id="audit-business-name">
+                </div>
+                <button type="submit" class="w-full gradient-bg text-white py-4 rounded-full font-semibold text-lg hover:opacity-90 transition">
+                    Send My Report
+                </button>
+            </form>
+
+            <!-- Filled by js/enquiry.js: the composed report request, and the ways
+                 to actually get it to someone. -->
+            <div id="audit-sent" class="hidden mt-6 gradient-bg text-white rounded-2xl p-8 text-center"></div>
+        </div>
+
+    </main>
+
+    <script src="js/enquiry.js"></script>
+    <script>
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const results = document.getElementById('results');
+        const leadForm = document.getElementById('lead-form');
+        
+        const totalQuestions = 25;
+        const categories = { leads: 5, email: 5, appointments: 5, payments: 5 };
+        
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', updateProgress);
+        });
+        
+        function updateProgress() {
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const percent = (checked / totalQuestions) * 100;
+            
+            progressBar.style.width = percent + '%';
+            progressText.textContent = checked + '/' + totalQuestions;
+            
+            if (checked >= 10) {
+                results.classList.remove('hidden');
+                leadForm.classList.remove('hidden');
+                calculateResults();
+            }
+        }
+        
+        function calculateResults() {
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const total = totalQuestions;
+            const score = Math.round((checked / total) * 100);
+            
+            document.getElementById('score-total').textContent = score + '%';
+            
+            // Calculate hours wasted (rough estimate)
+            const unchecked = total - checked;
+            const hoursWasted = unchecked * 2; // ~2 hours per unchecked item
+            document.getElementById('hours-wasted').textContent = hoursWasted + 'hrs';
+            
+            // Category scores
+            ['leads', 'email', 'appointments', 'payments'].forEach(cat => {
+                const catCheckboxes = document.querySelectorAll(`[data-category="${cat}"]:checked`);
+                const catScore = Math.round((catCheckboxes.length / categories[cat]) * 100);
+                document.getElementById(`${cat}-score`).textContent = catScore + '%';
+                document.getElementById(`${cat}-bar`).style.width = catScore + '%';
+            });
+            
+            // Recommendation
+            let recommendation = '';
+            if (score < 30) {
+                recommendation = "Your business has significant automation opportunities. You're likely losing leads and wasting 10+ hours per week on manual tasks. We recommend starting with Lead Capture Automation.";
+            } else if (score < 60) {
+                recommendation = "Good foundation! You have some systems in place but there are gaps. Focus on Email Automation and Appointment Reminders to maximize conversions.";
+            } else if (score < 80) {
+                recommendation = "Great work! You're ahead of most businesses. Consider adding advanced automations like invoice automation and custom dashboards to save even more time.";
+            } else {
+                recommendation = "Excellent! You're running a well-automated business. Consider our Premium package for advanced analytics and custom workflows.";
+            }
+            document.getElementById('recommendation-text').textContent = recommendation;
+        }
+        
+        // Form submission. The old handler printed the answer to the console and
+        // then said "Your report has been sent to your email", which was doubly
+        // false: nothing was sent, and the report was never going to be email — it
+        // is the thing already rendered on the screen. What is actually worth
+        // sending is the score, because that is the qualified-lead version of this
+        // visitor's own answer, and the recommendation the page just worked out.
+        const shown = (id) => {
+            const el = document.getElementById(id);
+            return el ? el.textContent.trim() : '';
+        };
+
+        AutoFlowEnquiry.wire({
+            formId: 'audit-form',
+            panelId: 'audit-sent',
+            title: 'AutoFlow — automation audit result',
+            subject: 'AutoFlow audit: free 15-minute call request',
+            rows: (form, field) => [
+                ['Name', [field(form, 'first_name'), field(form, 'last_name')].filter(Boolean).join(' ')],
+                ['Business', field(form, 'business')],
+                ['Email', field(form, 'email')],
+                ['My automation score', shown('score-total')],
+                ['Hours I said I waste', shown('hours-wasted')],
+                ['The recommendation I was shown', shown('recommendation-text')],
+            ],
+        });
+    </script>
+
+</body>
+</html>

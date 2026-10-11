@@ -1,0 +1,74 @@
+{
+  "name": "Email Follow-up Sequence",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "subscribe",
+        "responseMode": "lastNode"
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [250, 300],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": "YOUR_GOOGLE_SHEET_ID",
+        "sheetName": "Subscribers",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Email": "={{$json[\"email\"]}}",
+            "Name": "={{$json[\"name\"]}}",
+            "Sequence": "={{$json[\"sequence\"]}}",
+            "Step": "0",
+            "Subscribed At": "={{$now.toISO()}}",
+            "Status": "active"
+          }
+        }
+      },
+      "name": "Add Subscriber",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [450, 300],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "fromEmail": "your-email@gmail.com",
+        "toEmail": "={{$json[\"email\"]}}",
+        "subject": "Welcome {{$json[\"name\"]}}!",
+        "text": "Hi {{$json[\"name\"]}},\n\nThanks for joining! We're excited to have you.\n\nStay tuned for more.\n\nBest,\nThe Team"
+      },
+      "name": "Send Welcome Email",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [650, 300],
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Add Subscriber",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Subscriber": {
+      "main": [
+        [
+          {
+            "node": "Send Welcome Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Invoice Automation - Send & Track",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "create-invoice",
+        "responseMode": "lastNode"
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [250, 300],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": "YOUR_INVOICE_SHEET_ID",
+        "sheetName": "Invoices",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Invoice ID": "={{$json[\"invoice_id\"]}}",
+            "Client Name": "={{$json[\"client_name\"]}}",
+            "Client Email": "={{$json[\"client_email\"]}}",
+            "Amount": "={{$json[\"amount\"]}}",
+            "Status": "pending",
+            "Created": "={{$now.toISO()}}",
+            "Due Date": "={{$json[\"due_date\"]}}"
+          }
+        }
+      },
+      "name": "Log Invoice",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [450, 300],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "fromEmail": "your-email@gmail.com",
+        "toEmail": "={{$json[\"client_email\"]}}",
+        "subject": "Invoice #{{$json[\"invoice_id\"]}} - ${{$json[\"amount\"]}}",
+        "text": "Hi {{$json[\"client_name\"]}},\n\nYour invoice #{{$json[\"invoice_id\"]}} for {{$json[\"amount\"]}} is attached.\n\nDue Date: {{$json[\"due_date\"]}}\n\nPlease submit payment at your earliest convenience.\n\nThank you!\n[Your Name]"
+      },
+      "name": "Send Invoice",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [650, 300],
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{"node": "Log Invoice", "type": "main", "index": 0}]]
+    },
+    "Log Invoice": {
+      "main": [[{"node": "Send Invoice", "type": "main", "index": 0}]]
+    }
+  }
+}

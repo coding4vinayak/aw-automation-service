@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice | AutoFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-8 px-4">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold">⚡ AutoFlow</h1>
+                    <p class="text-white/80 mt-1">Business Automation Services</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold">INVOICE</div>
+                    <div class="text-white/80">Invoice #: <span id="invoice-number">AF-0001</span></div>
+                    <div class="text-white/80">Date: <span id="invoice-date"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- From / To -->
+        <div class="p-8 border-b">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h2 class="text-sm font-semibold text-gray-500 uppercase mb-2">From</h2>
+                    <div class="font-semibold">[Your Name]</div>
+                    <div class="text-gray-600">[Your Business Name]</div>
+                    <div class="text-gray-600">[Your Address]</div>
+                    <div class="text-gray-600">[Your Email]</div>
+                    <div class="text-gray-600">[Your Phone]</div>
+                </div>
+                <div>
+                    <h2 class="text-sm font-semibold text-gray-500 uppercase mb-2">Bill To</h2>
+                    <div class="font-semibold" id="client-name">[Client Name]</div>
+                    <div class="text-gray-600" id="client-business">[Client Business]</div>
+                    <div class="text-gray-600" id="client-address">[Client Address]</div>
+                    <div class="text-gray-600" id="client-email">[Client Email]</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Items -->
+        <div class="p-8">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-b-2 border-gray-200">
+                        <th class="text-left py-3 text-sm font-semibold text-gray-500 uppercase">Service</th>
+                        <th class="text-right py-3 text-sm font-semibold text-gray-500 uppercase">Qty</th>
+                        <th class="text-right py-3 text-sm font-semibold text-gray-500 uppercase">Rate</th>
+                        <th class="text-right py-3 text-sm font-semibold text-gray-500 uppercase">Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="line-items">
+                    <tr class="border-b">
+                        <td class="py-4">
+                            <div class="font-semibold">Lead Capture Automation</div>
+                            <div class="text-sm text-gray-500">Form → Google Sheets → Welcome Email</div>
+                        </td>
+                        <td class="text-right py-4">1</td>
+                        <td class="text-right py-4">$147</td>
+                        <td class="text-right py-4 font-semibold">$147</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-4">
+                            <div class="font-semibold">Email Follow-up Sequence</div>
+                            <div class="text-sm text-gray-500">5-email nurture sequence</div>
+                        </td>
+                        <td class="text-right py-4">1</td>
+                        <td class="text-right py-4">$197</td>
+                        <td class="text-right py-4 font-semibold">$197</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-4">
+                            <div class="font-semibold">Training & Documentation</div>
+                            <div class="text-sm text-gray-500">15-min training + video walkthrough</div>
+                        </td>
+                        <td class="text-right py-4">1</td>
+                        <td class="text-right py-4">Included</td>
+                        <td class="text-right py-4 font-semibold">$0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Totals -->
+            <div class="mt-8 flex justify-end">
+                <div class="w-72">
+                    <div class="flex justify-between py-2">
+                        <span class="text-gray-600">Subtotal</span>
+                        <span id="subtotal" class="font-semibold">$344</span>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <span class="text-gray-600">Discount (Package)</span>
+                        <span id="discount" class="text-green-600 font-semibold">-$69</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-t-2 border-gray-200">
+                        <span class="font-bold text-lg">Total Due</span>
+                        <span id="total" class="font-bold text-lg text-indigo-600">$275</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Info -->
+        <div class="p-8 bg-gray-50">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-semibold mb-2">Payment Methods</h3>
+                    <div class="text-sm text-gray-600 space-y-1">
+                        <div>PayPal: [your-paypal@email.com]</div>
+                        <div>Stripe: [stripe link]</div>
+                        <div>Bank: [Account details]</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Payment Terms</h3>
+                    <div class="text-sm text-gray-600">
+                        <div>Due: Upon receipt</div>
+                        <div>Late fee: 1.5% per month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="p-8 border-t">
+            <h3 class="font-semibold mb-2">Notes</h3>
+            <p class="text-sm text-gray-600">
+                Thank you for your business! If you have any questions about this invoice, please contact hello@abetworks.in.
+            </p>
+        </div>
+
+        <!-- Print Button -->
+        <div class="p-8 text-center no-print">
+            <button onclick="window.print()" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-medium hover:bg-indigo-700 transition">
+                Print Invoice
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Someone who has just filled in this invoice generator by hand is the most
+         qualified lead on the whole site: they have demonstrated the exact task the
+         service automates. There was no call-to-action anywhere on this page. -->
+    <section class="py-16 gradient-bg text-white text-center px-4">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4">Want this invoice sent itself?</h2>
+            <p class="text-xl text-white/90 mb-8">
+                You just typed the client details, the line items and the totals. That part
+                is the automation we build — from your form, to your sheet, to a numbered PDF
+                in their inbox.
+            </p>
+            <a href="booking.html?service=invoice" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
+                Book free 15-minute call →
+            </a>
+            <p class="text-sm text-white/70 mt-4">
+                No obligation. Or email
+                <a href="mailto:hello@abetworks.in" class="underline font-semibold">hello@abetworks.in</a>.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Set today's date
+        document.getElementById('invoice-date').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+    <script src="js/enquiry.js"></script>
+</body>
+</html>

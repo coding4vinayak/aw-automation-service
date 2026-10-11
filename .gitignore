@@ -1,0 +1,21 @@
+# python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+venv/
+.venv/
+
+# local dev state
+*.log
+nohup.out
+
+# real secrets never get committed
+.env
+.env.*
+!.env.example
+
+# build output
+build/
+dist/
+.sitemap-cache/

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Free Consultation | AutoFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Book Your Free Consultation</h1>
+            <p class="text-xl text-white/90">15 minutes. No pitch. Just advice on what you can automate.</p>
+        </div>
+    </header>
+
+    <!-- Booking Form -->
+    <main class="max-w-2xl mx-auto px-4 -mt-8 pb-20">
+        
+        <!-- Calendly Embed Alternative: Simple Booking -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 class="text-xl font-bold mb-6">Select a Time Slot</h2>
+            
+            <!-- Date Selection -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-3">Choose a Date</label>
+                <div class="grid grid-cols-4 gap-2" id="date-picker">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            
+            <!-- Time Selection -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-3">Choose a Time</label>
+                <div class="grid grid-cols-3 gap-2" id="time-picker">
+                    <button class="time-slot border border-gray-200 rounded-lg py-2 px-4 hover:border-primary hover:bg-primary/5 transition text-sm">9:00 AM</button>
+                    <button class="time-slot border border-gray-200 rounded-lg py-2 px-4 hover:border-primary hover:bg-primary/5 transition text-sm">10:00 AM</button>
+                    <button class="time-slot border border-gray-200 rounded-lg py-2 px-4 hover:border-primary hover:bg-primary/5 transition text-sm">11:00 AM</button>
+                    <button class="time-slot border border-gray-200 rounded-lg py-2 px-4 hover:border-primary hover:bg-primary/5 transition text-sm">1:00 PM</button>
+                    <button class="time-slot border border-gray-200 rounded-lg py-2 px-4 hover:border-primary hover:bg-primary/5 transition text-sm">2:00 PM</button>
+                    <button class="time-slot border border-gray-200 rounded-lg py-2 px-4 hover:border-primary hover:bg-primary/5 transition text-sm">3:00 PM</button>
+                    <button class="time-slot border border-gray-200 rounded-lg py-2 px-4 hover:border-primary hover:bg-primary/5 transition text-sm">4:00 PM</button>
+                    <button class="time-slot border border-gray-200 rounded-lg py-2 px-4 hover:border-primary hover:bg-primary/5 transition text-sm">5:00 PM</button>
+                </div>
+            </div>
+            
+            <hr class="my-6">
+            
+            <!-- Contact Info -->
+            <h2 class="text-xl font-bold mb-6">Your Information</h2>
+
+            <!-- Filled from ?service=&price= when the visitor arrives from a
+                 service page, so the package they were just looking at is named
+                 back to them before they type anything. -->
+            <div id="package-note" class="hidden mb-4 text-sm font-medium text-indigo-700 bg-indigo-50 border border-indigo-100 rounded-xl px-4 py-3"></div>
+
+            <form id="booking-form">
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="booking-first-name">First Name *</label>
+                        <input type="text" name="first_name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none" id="booking-first-name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="booking-last-name">Last Name *</label>
+                        <input type="text" name="last_name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none" id="booking-last-name">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="booking-email">Email *</label>
+                    <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none" id="booking-email">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="booking-phone">Phone</label>
+                    <input type="tel" name="phone" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none" id="booking-phone">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="booking-business-name">Business Name</label>
+                    <input type="text" name="business" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none" id="booking-business-name">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="booking-what-do-you-want-to-discuss">What do you want to discuss?</label>
+                    <select name="topic" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none" id="booking-what-do-you-want-to-discuss">
+                        <option value="general">General consultation</option>
+                        <option value="lead-capture">Lead capture automation</option>
+                        <option value="email">Email automation</option>
+                        <option value="appointment">Appointment booking</option>
+                        <option value="invoice">Invoice automation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full gradient-bg text-white py-4 rounded-full font-semibold text-lg hover:opacity-90 transition">
+                    Send booking request
+                </button>
+            </form>
+
+            <!-- Filled by js/enquiry.js. Deliberately not a "confirmed" message:
+                 this page cannot book anything, and saying otherwise loses the
+                 customer twice over. -->
+            <div id="booking-sent" class="hidden mt-6 gradient-bg text-white rounded-2xl p-8 text-center"></div>
+        </div>
+
+        <!-- What to Expect -->
+        <div class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+            <h2 class="text-xl font-bold mb-6">What to Expect</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">📞</span>
+                    </div>
+                    <h3 class="font-medium mb-1">15-Min Call</h3>
+                    <p class="text-sm text-gray-600">Quick, focused conversation about your business</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">🔍</span>
+                    </div>
+                    <h3 class="font-medium mb-1">Pain Point Analysis</h3>
+                    <p class="text-sm text-gray-600">Identify what's wasting your time</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="text-xl">💡</span>
+                    </div>
+                    <h3 class="font-medium mb-1">Custom Advice</h3>
+                    <p class="text-sm text-gray-600">Get specific recommendations (free)</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/enquiry.js"></script>
+    <script>
+        // Generate dates for next 7 days
+        const datePicker = document.getElementById('date-picker');
+        const today = new Date();
+        
+        for (let i = 1; i <= 7; i++) {
+            const date = new Date(today);
+            date.setDate(today.getDate() + i);
+            
+            // Skip weekends
+            if (date.getDay() === 0 || date.getDay() === 6) continue;
+            
+            const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'date-btn border border-gray-200 rounded-lg py-3 text-center hover:border-indigo-500 hover:bg-indigo-50 transition';
+            btn.innerHTML = `
+                <div class="text-xs text-gray-500">${dayNames[date.getDay()]}</div>
+                <div class="font-bold">${date.getDate()}</div>
+                <div class="text-xs text-gray-500">${monthNames[date.getMonth()]}</div>
+            `;
+            btn.dataset.date = date.toISOString().split('T')[0];
+            datePicker.appendChild(btn);
+        }
+        
+        // Date and time selection. Both feed the enquiry text, and the submit
+        // button stays disabled until a slot exists — the old code used an alert()
+        // after the click, which is a worse way to say "pick a time" than not being
+        // able to press the button in the first place.
+        let selectedDate = null;
+        let selectedTime = null;
+        const submitButton = document.querySelector('#booking-form button[type="submit"]');
+
+        function syncSubmitState() {
+            if (!submitButton) return;
+            const ready = Boolean(selectedDate && selectedTime);
+            submitButton.disabled = !ready;
+            submitButton.classList.toggle('opacity-40', !ready);
+            submitButton.classList.toggle('cursor-not-allowed', !ready);
+            submitButton.title = ready ? '' : 'Choose a date and a time first';
+        }
+        syncSubmitState();
+
+        document.querySelectorAll('.date-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('border-indigo-500', 'bg-indigo-50'));
+                this.classList.add('border-indigo-500', 'bg-indigo-50');
+                selectedDate = this.dataset.date;
+                syncSubmitState();
+            });
+        });
+
+        document.querySelectorAll('.time-slot').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('border-indigo-500', 'bg-indigo-50', 'text-indigo-600'));
+                this.classList.add('border-indigo-500', 'bg-indigo-50', 'text-indigo-600');
+                selectedTime = this.textContent.trim();
+                syncSubmitState();
+            });
+        });
+
+        // Form submission. This composes the enquiry and opens the visitor's own
+        // WhatsApp or mail app with it; see js/enquiry.js. The topic is read from
+        // the option's label rather than its value, because the value is
+        // "lead-capture" and what the reader wants to see is
+        // "Lead capture automation".
+        const topic = (form) => {
+            const select = form.elements.topic;
+            if (!select || select.selectedIndex < 0) return '';
+            return select.options[select.selectedIndex].text.trim();
+        };
+
+        // Two ways to arrive with a package already named: a service page links here
+        // as booking.html?service=lead-capture&price=147, and the calculator links as
+        // ?pkg=Lead%20Capture%20%24147%20%2B%20...&price=294&saved=26 for a bundle.
+        // Honouring both means the customer never re-states what they already chose,
+        // and the price they read is the price that reaches the reply.
+        const params = new URLSearchParams(location.search);
+        const wantedService = params.get('service') || '';
+        const wantedPrice = (params.get('price') || '').replace(/[^0-9]/g, '');
+        const saved = (params.get('saved') || '').replace(/[^0-9]/g, '');
+        // pkg is text a visitor can edit in the address bar, and it ends up inside a
+        // mail body whose rows are separated by line breaks. Strip line breaks and
+        // non-printables and cap it, so a hand-made link cannot forge extra rows in
+        // its own enquiry or bloat a mailto past what a mail client will open.
+        const pkg = (params.get('pkg') || '')
+            .replace(/[\r\n\t]+/g, ' ')
+            .replace(/[^\x20-\x7e]/g, '')
+            .slice(0, 200)
+            .trim();
+        const topicSelect = document.querySelector('#booking-form select[name="topic"]');
+        const packageNote = document.getElementById('package-note');
+        let chosenLabel = '';
+
+        if (topicSelect && wantedService) {
+            const match = Array.from(topicSelect.options).find((o) => o.value === wantedService);
+            if (match) {
+                topicSelect.value = match.value;
+                chosenLabel = match.text.trim();
+            }
+        }
+
+        let note = '';
+        if (pkg) {
+            note = `Package you built: ${pkg} — total $${wantedPrice}`;
+            if (saved) note += ` (you saved $${saved})`;
+        } else if (chosenLabel) {
+            note = wantedPrice
+                ? `Interested in: ${chosenLabel} — quoted on the site at $${wantedPrice}`
+                : `Interested in: ${chosenLabel}`;
+        }
+        if (packageNote && note) {
+            packageNote.textContent = note;
+            packageNote.classList.remove('hidden');
+        }
+
+        // A bundle is itemised with its discounted total; a single service keeps its
+        // label. Either way this string is what the business receives, so the quote
+        // cannot quietly become "interested in other".
+        const packageText = pkg
+            ? `${pkg} = $${wantedPrice}${saved ? ` (saved $${saved})` : ''}`
+            : (chosenLabel ? chosenLabel + (wantedPrice ? ` ($${wantedPrice})` : '') : '');
+
+        AutoFlowEnquiry.wire({
+            formId: 'booking-form',
+            panelId: 'booking-sent',
+            title: 'AutoFlow — request for the free 15-minute call',
+            subject: pkg
+                ? `AutoFlow call: package${wantedPrice ? ` — $${wantedPrice}` : ''}`
+                : (packageText ? `AutoFlow call: ${packageText}` : 'AutoFlow call request'),
+            rows: (form, field) => [
+                ['Name', [field(form, 'first_name'), field(form, 'last_name')].filter(Boolean).join(' ')],
+                ['Business', field(form, 'business')],
+                ['Email', field(form, 'email')],
+                ['Phone', field(form, 'phone')],
+                ['Wants to discuss', packageText || topic(form)],
+                ['Preferred slot', selectedDate && selectedTime ? selectedDate + ', ' + selectedTime : ''],
+            ],
+        });
+    </script>
+</body>
+</html>

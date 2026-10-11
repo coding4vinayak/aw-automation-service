@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot | AutoFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); }
+        .chat-bubble { animation: fadeInUp 0.3s ease; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .typing { animation: typing 1.5s infinite; }
+        @keyframes typing {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-indigo-600">⚡ AutoFlow</a>
+            <a href="../index.html" class="text-gray-600 hover:text-indigo-600">← Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20 px-4 gradient-bg text-white">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-block bg-white/20 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                🤖 AI POWERED
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
+                AI Chatbot for Your Business
+            </h1>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto mb-10">
+                24/7 customer support, lead capture, and qualification — all automated with AI. Never miss a lead again.
+            </p>
+            <a href="../booking.html?service=other&price=297" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition shadow-lg">
+                Get Started - $297 →
+            </a>
+        </div>
+    </section>
+
+    <!-- Live Demo -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">See It In Action</h2>
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden max-w-md mx-auto">
+                <!-- Chat Header -->
+                <div class="gradient-bg text-white p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                            <span class="text-xl">🤖</span>
+                        </div>
+                        <div>
+                            <div class="font-semibold">AutoFlow Assistant</div>
+                            <div class="text-xs text-white/80">Online now</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chat Messages -->
+                <div id="chat-messages" class="p-4 h-80 overflow-y-auto space-y-4">
+                    <div class="chat-bubble flex gap-3">
+                        <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-sm">🤖</span>
+                        </div>
+                        <div class="bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs">
+                            <p class="text-sm">Hi! I'm AutoFlow Assistant. How can I help you today?</p>
+                        </div>
+                    </div>
+                    <div class="chat-bubble flex gap-3 justify-end">
+                        <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none px-4 py-3 max-w-xs">
+                            <p class="text-sm">I want to automate my lead capture</p>
+                        </div>
+                    </div>
+                    <div class="chat-bubble flex gap-3">
+                        <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-sm">🤖</span>
+                        </div>
+                        <div class="bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs">
+                            <p class="text-sm">Great choice! I can help with that. What industry is your business in?</p>
+                        </div>
+                    </div>
+                    <div class="chat-bubble flex gap-3 justify-end">
+                        <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none px-4 py-3 max-w-xs">
+                            <p class="text-sm">Dental clinic</p>
+                        </div>
+                    </div>
+                    <div class="chat-bubble flex gap-3">
+                        <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-sm">🤖</span>
+                        </div>
+                        <div class="bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs">
+                            <p class="text-sm">Perfect! For dental clinics, I recommend our Lead Capture package at $147. It includes form → Google Sheets → welcome email. Would you like to book a free consultation?</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chat Input -->
+                <div class="border-t p-4">
+                    <div class="flex gap-2">
+                        <input type="text" id="chat-input" aria-label="Type a message" placeholder="Type a message..." class="flex-1 px-4 py-2 border border-gray-200 rounded-full focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
+                        <button id="send-btn" class="w-10 h-10 gradient-bg text-white rounded-full flex items-center justify-center hover:opacity-90">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">What the Chatbot Does</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="font-semibold mb-2">24/7 Support</h3>
+                    <p class="text-gray-600 text-sm">Answer questions instantly, even while you sleep.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="font-semibold mb-2">Lead Capture</h3>
+                    <p class="text-gray-600 text-sm">Collect email, phone, and qualify leads automatically.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-4xl mb-4">📅</div>
+                    <h3 class="font-semibold mb-2">Book Appointments</h3>
+                    <p class="text-gray-600 text-sm">Let prospects schedule directly from the chat.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="font-semibold mb-2">Qualify Leads</h3>
+                    <p class="text-gray-600 text-sm">Ask qualifying questions and score leads.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-4xl mb-4">🔗</div>
+                    <h3 class="font-semibold mb-2">CRM Integration</h3>
+                    <p class="text-gray-600 text-sm">Auto-add leads to your CRM or Google Sheets.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-4xl mb-4">🧠</div>
+                    <h3 class="font-semibold mb-2">AI Powered</h3>
+                    <p class="text-gray-600 text-sm">Understands context and provides smart responses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="py-20">
+        <div class="max-w-lg mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8">Pricing</h2>
+            <div class="bg-white border-2 border-indigo-600 rounded-2xl p-8 shadow-lg">
+                <div class="text-sm text-gray-500 mb-2">ONE-TIME PAYMENT</div>
+                <div class="text-5xl font-extrabold text-indigo-600 mb-2">$297</div>
+                <div class="text-gray-500 mb-6">Custom chatbot for your business.</div>
+                <ul class="text-left space-y-3 mb-8">
+                    <li class="flex items-center text-gray-600">
+                        <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Custom chatbot design
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Lead capture & qualification
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Appointment booking
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        CRM integration
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Training + 14-day support
+                    </li>
+                </ul>
+                <a href="../booking.html?service=other&price=297" class="block w-full gradient-bg text-white py-4 rounded-full font-semibold text-lg hover:opacity-90 transition">
+                    Get Started Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 gradient-bg text-white text-center px-4">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4">Never Miss a Lead Again</h2>
+            <a href="../booking.html?service=other&price=297" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition mt-6">
+                Get Your AI Chatbot →
+            </a>
+        </div>
+    </section>
+
+    <script>
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        
+        const responses = {
+            'price': 'Our packages start at $297 for Lead Capture, $697 for Growth (3 automations), and $1,497 for Premium (5 automations + dashboard).',
+            'how': 'We build your automation in 24-48 hours. You fill out a quick form, we build it, train you, and you\'re live!',
+            'demo': 'I\'d be happy to show you a demo! Book a free 15-minute call: autoflow.com/booking',
+            'help': 'I can help with lead capture, email automation, appointment booking, invoicing, and more. What do you need?'
+        };
+        
+        function addMessage(text, isUser = false) {
+            const div = document.createElement('div');
+            div.className = `chat-bubble flex gap-3 ${isUser ? 'justify-end' : ''}`;
+            
+            if (isUser) {
+                div.innerHTML = `<div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none px-4 py-3 max-w-xs"><p class="text-sm">${text}</p></div>`;
+            } else {
+                div.innerHTML = `<div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0"><span class="text-sm">🤖</span></div><div class="bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3 max-w-xs"><p class="text-sm">${text}</p></div>`;
+            }
+            
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function getResponse(input) {
+            const lower = input.toLowerCase();
+            for (const [key, value] of Object.entries(responses)) {
+                if (lower.includes(key)) return value;
+            }
+            return 'Great question! Let me connect you with our team. Book a free call: autoflow.com/booking';
+        }
+        
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+            
+            addMessage(text, true);
+            chatInput.value = '';
+            
+            setTimeout(() => {
+                addMessage(getResponse(text));
+            }, 1000);
+        }
+        
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+
+    <script src="../js/enquiry.js"></script>
+</body>
+</html>

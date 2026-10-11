@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Calculator | AutoFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); }
+        .service-card { transition: all 0.3s ease; }
+        .service-card.selected { border-color: #6366f1; background: #eef2ff; }
+        .service-card:hover { border-color: #6366f1; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Build Your Package</h1>
+            <p class="text-xl text-white/90">Select the automations you need and get instant pricing.</p>
+        </div>
+    </header>
+
+    <!-- Calculator -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        
+        <!-- Service Selection -->
+        <div class="bg-white rounded-2xl shadow-sm p-8 mb-8">
+            <h2 class="text-2xl font-bold mb-6">Select Services</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                
+                <div class="service-card border-2 border-gray-200 rounded-xl p-6 cursor-pointer" data-service="lead-capture" data-price="147">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1 rounded accent-indigo-600" aria-label="Lead Capture">
+                        <div>
+                            <h3 class="font-semibold text-lg">Lead Capture</h3>
+                            <p class="text-gray-600 text-sm mb-2">Form → Google Sheets → Welcome Email</p>
+                            <div class="text-indigo-600 font-bold">$147</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card border-2 border-gray-200 rounded-xl p-6 cursor-pointer" data-service="email-sequence" data-price="197">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1 rounded accent-indigo-600" aria-label="Email Follow-up">
+                        <div>
+                            <h3 class="font-semibold text-lg">Email Follow-up</h3>
+                            <p class="text-gray-600 text-sm mb-2">3-5 email nurture sequence</p>
+                            <div class="text-indigo-600 font-bold">$197</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card border-2 border-gray-200 rounded-xl p-6 cursor-pointer" data-service="appointment" data-price="197">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1 rounded accent-indigo-600" aria-label="Appointment Booking">
+                        <div>
+                            <h3 class="font-semibold text-lg">Appointment Booking</h3>
+                            <p class="text-gray-600 text-sm mb-2">Online booking + reminders</p>
+                            <div class="text-indigo-600 font-bold">$197</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card border-2 border-gray-200 rounded-xl p-6 cursor-pointer" data-service="invoice" data-price="147">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1 rounded accent-indigo-600" aria-label="Invoice Automation">
+                        <div>
+                            <h3 class="font-semibold text-lg">Invoice Automation</h3>
+                            <p class="text-gray-600 text-sm mb-2">Auto-send invoices + reminders</p>
+                            <div class="text-indigo-600 font-bold">$147</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card border-2 border-gray-200 rounded-xl p-6 cursor-pointer" data-service="review" data-price="147">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1 rounded accent-indigo-600" aria-label="Review Requests">
+                        <div>
+                            <h3 class="font-semibold text-lg">Review Requests</h3>
+                            <p class="text-gray-600 text-sm mb-2">Auto-request reviews after service</p>
+                            <div class="text-indigo-600 font-bold">$147</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card border-2 border-gray-200 rounded-xl p-6 cursor-pointer" data-service="social" data-price="197">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1 rounded accent-indigo-600" aria-label="Social Media Scheduling">
+                        <div>
+                            <h3 class="font-semibold text-lg">Social Media Scheduling</h3>
+                            <p class="text-gray-600 text-sm mb-2">Auto-post across platforms</p>
+                            <div class="text-indigo-600 font-bold">$197</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card border-2 border-gray-200 rounded-xl p-6 cursor-pointer" data-service="dashboard" data-price="347">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1 rounded accent-indigo-600" aria-label="Custom Dashboard">
+                        <div>
+                            <h3 class="font-semibold text-lg">Custom Dashboard</h3>
+                            <p class="text-gray-600 text-sm mb-2">Automated reporting dashboard</p>
+                            <div class="text-indigo-600 font-bold">$347</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card border-2 border-gray-200 rounded-xl p-6 cursor-pointer" data-service="custom" data-price="497">
+                    <div class="flex items-start gap-4">
+                        <input type="checkbox" class="w-5 h-5 mt-1 rounded accent-indigo-600" aria-label="Custom Automation">
+                        <div>
+                            <h3 class="font-semibold text-lg">Custom Automation</h3>
+                            <p class="text-gray-600 text-sm mb-2">Build anything you need</p>
+                            <div class="text-indigo-600 font-bold">$497+</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Pricing Summary -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h2 class="text-2xl font-bold mb-6">Your Package</h2>
+            
+            <div id="selected-services" class="space-y-3 mb-6">
+                <p class="text-gray-500 text-center py-4">Select services above to build your package</p>
+            </div>
+
+            <div class="border-t pt-6">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-gray-600">Subtotal</span>
+                    <span id="subtotal" class="font-semibold">$0</span>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-gray-600">Package Discount</span>
+                    <span id="discount" class="text-green-600 font-semibold">-$0</span>
+                </div>
+                <div class="flex justify-between items-center text-xl font-bold">
+                    <span>Total</span>
+                    <span id="total" class="text-indigo-600">$0</span>
+                </div>
+            </div>
+
+            <div id="savings-banner" class="hidden bg-green-50 border border-green-200 rounded-xl p-4 mt-6 text-center">
+                <span class="text-green-700 font-semibold">🎉 You're saving <span id="savings-amount">$0</span> with the package deal!</span>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a id="book-link" href="booking.html" class="inline-block gradient-bg text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition opacity-50 pointer-events-none">
+                    Select Services to Continue
+                </a>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="bg-white rounded-2xl shadow-sm p-8">
+            <h2 class="text-2xl font-bold mb-6">Pricing FAQ</h2>
+            <div class="space-y-4">
+                <div>
+                    <h3 class="font-semibold mb-1">Is there a monthly fee?</h3>
+                    <p class="text-gray-600 text-sm">No. All prices are one-time fees. You own everything. Tools cost $0-20/month (free tiers).</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-1">What's the package discount?</h3>
+                    <p class="text-gray-600 text-sm">2+ services: 10% off. 3+ services: 15% off. 5+ services: 20% off.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-1">What's included?</h3>
+                    <p class="text-gray-600 text-sm">Complete setup, training video, documentation, and 7-30 days support (depending on package).</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-1">Payment plans available?</h3>
+                    <p class="text-gray-600 text-sm">Yes! 50% upfront, 50% on delivery. Or pay in full for 5% extra discount.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const serviceCards = document.querySelectorAll('.service-card');
+        const selectedServicesDiv = document.getElementById('selected-services');
+        const subtotalSpan = document.getElementById('subtotal');
+        const discountSpan = document.getElementById('discount');
+        const totalSpan = document.getElementById('total');
+        const savingsBanner = document.getElementById('savings-banner');
+        const savingsAmount = document.getElementById('savings-amount');
+        const bookLink = document.getElementById('book-link');
+
+        // booking.html's topic <select> and this page's service cards are two
+        // vocabularies for the same thing: the cards say "email-sequence", the form
+        // says "email", and four of the eight cards have no topic of their own at
+        // all. Anything unmapped goes to "other" rather than guessing — a fuzzy
+        // match would preselect the wrong service and the visitor would not notice.
+        const TOPIC_BY_SERVICE = {
+            'lead-capture': 'lead-capture',
+            'email-sequence': 'email',
+            'appointment': 'appointment',
+            'invoice': 'invoice',
+            'review': 'other',
+            'social': 'other',
+            'dashboard': 'other',
+            'custom': 'other',
+        };
+
+        serviceCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+                this.classList.toggle('selected', checkbox.checked);
+                updatePricing();
+            });
+        });
+
+        function updatePricing() {
+            const selected = [];
+            let subtotal = 0;
+
+            serviceCards.forEach(card => {
+                const checkbox = card.querySelector('input[type="checkbox"]');
+                if (checkbox.checked) {
+                    const service = card.dataset.service;
+                    const price = parseInt(card.dataset.price);
+                    selected.push({ service, price });
+                    subtotal += price;
+                }
+            });
+
+            // Calculate discount
+            let discountPercent = 0;
+            if (selected.length >= 5) discountPercent = 20;
+            else if (selected.length >= 3) discountPercent = 15;
+            else if (selected.length >= 2) discountPercent = 10;
+
+            const discount = Math.round(subtotal * discountPercent / 100);
+            const total = subtotal - discount;
+
+            // Update UI
+            if (selected.length === 0) {
+                selectedServicesDiv.innerHTML = '<p class="text-gray-500 text-center py-4">Select services above to build your package</p>';
+                bookLink.classList.add('opacity-50', 'pointer-events-none');
+                bookLink.textContent = 'Select Services to Continue';
+                // pointer-events-none hides the link, it does not remove it: right
+                // click → "open in new tab" would still carry the last quote, which
+                // is now wrong. Retract it.
+                bookLink.href = 'booking.html';
+            } else {
+                const serviceNames = {
+                    'lead-capture': 'Lead Capture',
+                    'email-sequence': 'Email Follow-up',
+                    'appointment': 'Appointment Booking',
+                    'invoice': 'Invoice Automation',
+                    'review': 'Review Requests',
+                    'social': 'Social Media Scheduling',
+                    'dashboard': 'Custom Dashboard',
+                    'custom': 'Custom Automation'
+                };
+                
+                selectedServicesDiv.innerHTML = selected.map(s => `
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <span>${serviceNames[s.service]}</span>
+                        <span class="font-medium">$${s.price}</span>
+                    </div>
+                `).join('');
+                
+                bookLink.classList.remove('opacity-50', 'pointer-events-none');
+                bookLink.textContent = `Get Started - $${total} →`;
+
+                // The button promises "$total" and the visitor just spent time
+                // choosing these items. Until here none of it travelled with them:
+                // the href stayed bare booking.html, so the form reopened at
+                // "Select a service" and the enquiry said nothing about the bundle
+                // or the price they were quoted. A single pick can preselect a
+                // topic; a bundle cannot, so it itemises and lets the topic stay
+                // "Other" rather than naming one arbitrary component.
+                const q = new URLSearchParams();
+                q.set('service', selected.length === 1
+                    ? (TOPIC_BY_SERVICE[selected[0].service] || 'other')
+                    : 'other');
+                q.set('price', String(total));
+                if (selected.length > 1) {
+                    q.set('pkg', selected.map((s) => `${serviceNames[s.service]} $${s.price}`).join(' + '));
+                }
+                if (discount > 0) q.set('saved', String(discount));
+                bookLink.href = `booking.html?${q.toString()}`;
+            }
+
+            subtotalSpan.textContent = `$${subtotal}`;
+            discountSpan.textContent = `-$${discount}`;
+            totalSpan.textContent = `$${total}`;
+
+            if (discount > 0) {
+                savingsBanner.classList.remove('hidden');
+                savingsAmount.textContent = `$${discount}`;
+            } else {
+                savingsBanner.classList.add('hidden');
+            }
+        }
+    </script>
+
+    <script src="js/enquiry.js"></script>
+</body>
+</html>

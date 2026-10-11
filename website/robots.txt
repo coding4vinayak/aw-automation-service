@@ -1,0 +1,5 @@
+# AutoFlow robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://abetworks.in/sitemap.xml

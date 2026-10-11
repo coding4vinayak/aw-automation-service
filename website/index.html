@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFlow | Business Automation Services | Save 20+ Hours/Week</title>
+    <meta name="description" content="Automate your business with lead capture, email sequences, appointment booking & more. Save 20+ hours/week. Free consultation.">
+    <meta name="keywords" content="business automation, lead capture, email automation, zapier, n8n, python automation">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#06b6d4',
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%); }
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15); }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">⚡ AutoFlow</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-gray-600 hover:text-primary transition">Services</a>
+                    <a href="case-studies.html" class="text-gray-600 hover:text-primary transition">Case Studies</a>
+                    <a href="calculator.html" class="text-gray-600 hover:text-primary transition">Pricing</a>
+                    <a href="audit.html" class="text-gray-600 hover:text-primary transition">Free Audit</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary transition">About</a>
+                    <a href="booking.html" class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:bg-secondary transition">Book Free Call</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#services" class="block py-2 text-gray-600">Services</a>
+                <a href="case-studies.html" class="block py-2 text-gray-600">Case Studies</a>
+                <a href="calculator.html" class="block py-2 text-gray-600">Pricing</a>
+                <a href="audit.html" class="block py-2 text-gray-600">Free Audit</a>
+                <a href="about.html" class="block py-2 text-gray-600">About</a>
+                <a href="#faq" class="block py-2 text-gray-600">FAQ</a>
+                <a href="#faq" class="block py-2 text-gray-600">FAQ</a>
+                <a href="#contact" class="block py-2 text-primary font-medium">Book Free Call</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                🚀 Save 20+ Hours Every Week
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Stop Doing Repetitive Tasks.<br>
+                <span class="gradient-text">Let Automation Handle It.</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+                We build custom automations for small businesses — lead capture, email sequences, appointment booking, invoicing — so you can focus on growing your business.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="gradient-bg text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition shadow-lg">
+                    Book Free Consultation
+                </a>
+                <a href="#how-it-works" class="border-2 border-gray-200 text-gray-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-primary hover:text-primary transition">
+                    See How It Works →
+                </a>
+            </div>
+            
+            <!-- Social Proof -->
+            <div class="mt-16 flex flex-wrap justify-center gap-8 text-gray-500">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-bold text-gray-900">50+</span>
+                    <span>Automations Built</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-bold text-gray-900">200+</span>
+                    <span>Hours Saved Weekly</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-bold text-gray-900">100%</span>
+                    <span>Satisfaction Rate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Sound Familiar?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Most small business owners waste hours every week on tasks that should take minutes.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-red-100">
+                    <div class="text-4xl mb-4">😤</div>
+                    <h3 class="text-xl font-semibold mb-2 text-red-600">Manual Data Entry</h3>
+                    <p class="text-gray-600">Copying information between spreadsheets, forms, and apps. Hours wasted every day.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-red-100">
+                    <div class="text-4xl mb-4">📉</div>
+                    <h3 class="text-xl font-semibold mb-2 text-red-600">Cold Leads</h3>
+                    <p class="text-gray-600">Leads go cold because you forgot to follow up. Lost revenue every month.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-red-100">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-xl font-semibold mb-2 text-red-600">Missed Appointments</h3>
+                    <p class="text-gray-600">No-shows cost you money. No reminders, no follow-ups, no system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What We Automate</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We build custom automations tailored to your business. No cookie-cutter solutions.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Lead Capture</h3>
+                    <p class="text-gray-600 mb-4">Automatically capture leads from website, forms, social media → Google Sheets/CRM → Welcome email.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Website form automation</li>
+                        <li>✓ Social media lead capture</li>
+                        <li>✓ CRM integration</li>
+                        <li>✓ Instant welcome emails</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">📧</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Email Sequences</h3>
+                    <p class="text-gray-600 mb-4">Automated email follow-ups that nurture leads and convert them into customers.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Welcome sequences</li>
+                        <li>✓ Follow-up sequences</li>
+                        <li>✓ Re-engagement campaigns</li>
+                        <li>✓ Review request emails</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">📅</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Appointment Booking</h3>
+                    <p class="text-gray-600 mb-4">Online booking system with automated reminders and follow-ups.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Online calendar booking</li>
+                        <li>✓ SMS/email reminders</li>
+                        <li>✓ No-show follow-ups</li>
+                        <li>✓ Rescheduling automation</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-14 h-14 bg-green-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">💰</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Invoice & Payments</h3>
+                    <p class="text-gray-600 mb-4">Auto-send invoices, track payments, and send overdue reminders.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Auto invoice generation</li>
+                        <li>✓ Payment reminders</li>
+                        <li>✓ Overdue notifications</li>
+                        <li>✓ Receipt automation</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">📱</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Social Media</h3>
+                    <p class="text-gray-600 mb-4">Auto-schedule posts, respond to comments, and manage multiple platforms.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Content scheduling</li>
+                        <li>✓ Cross-platform posting</li>
+                        <li>✓ Comment monitoring</li>
+                        <li>✓ Analytics reporting</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Custom Dashboards</h3>
+                    <p class="text-gray-600 mb-4">Automated reports and dashboards that update in real-time.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Google Sheets dashboards</li>
+                        <li>✓ Automated daily/weekly reports</li>
+                        <li>✓ Data visualization</li>
+                        <li>✓ Email report delivery</li>
+                    </ul>
+                </div>
+
+                <!-- Service 7 - NEW -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">AI Chatbot</h3>
+                    <p class="text-gray-600 mb-4">24/7 customer support and lead qualification with AI.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ 24/7 automated support</li>
+                        <li>✓ Lead capture & qualify</li>
+                        <li>✓ Book appointments</li>
+                        <li>✓ CRM integration</li>
+                    </ul>
+                </div>
+
+                <!-- Service 8 - NEW -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">📱</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Multi-Channel Outreach</h3>
+                    <p class="text-gray-600 mb-4">Reach prospects on Email + LinkedIn + SMS automatically.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ Email sequences</li>
+                        <li>✓ LinkedIn automation</li>
+                        <li>✓ SMS follow-ups</li>
+                        <li>✓ 3x more replies</li>
+                    </ul>
+                </div>
+
+                <!-- Service 9 - NEW -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <span class="text-2xl">🚀</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Waitlist Builder</h3>
+                    <p class="text-gray-600 mb-4">Launch-ready waitlist pages with referral system.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>✓ High-converting pages</li>
+                        <li>✓ Referral system</li>
+                        <li>✓ Email sequences</li>
+                        <li>✓ Real-time analytics</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Simple 4-step process. From consultation to automation in 7 days.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">1</div>
+                    <h3 class="text-lg font-semibold mb-2">Free Consultation</h3>
+                    <p class="text-gray-600 text-sm">15-minute call to understand your business and pain points.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">2</div>
+                    <h3 class="text-lg font-semibold mb-2">Custom Proposal</h3>
+                    <p class="text-gray-600 text-sm">Detailed plan with automations, timeline, and transparent pricing.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">3</div>
+                    <h3 class="text-lg font-semibold mb-2">Build & Test</h3>
+                    <p class="text-gray-600 text-sm">We build your automations and test everything thoroughly.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">4</div>
+                    <h3 class="text-lg font-semibold mb-2">Launch & Train</h3>
+                    <p class="text-gray-600 text-sm">Go live with full training and 7-day support included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">No hidden fees. No monthly subscriptions. Pay once, own it forever.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Starter -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="text-sm font-medium text-gray-500 mb-2">STARTER</div>
+                    <div class="text-4xl font-bold mb-2">$297</div>
+                    <div class="text-gray-500 text-sm mb-6">One-time payment</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            1 Automation
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Lead Capture OR Email Sequence
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Google Sheets Integration
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Training Video
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            7-Day Support
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block w-full text-center border-2 border-primary text-primary py-3 rounded-full font-medium hover:bg-primary hover:text-white transition">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Growth -->
+                <div class="gradient-bg p-8 rounded-2xl shadow-xl text-white card-hover relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-sm font-bold">
+                        MOST POPULAR
+                    </div>
+                    <div class="text-sm font-medium text-white/70 mb-2">GROWTH</div>
+                    <div class="text-4xl font-bold mb-2">$697</div>
+                    <div class="text-white/70 text-sm mb-6">One-time payment</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-white/90">
+                            <svg class="w-5 h-5 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            3 Automations
+                        </li>
+                        <li class="flex items-center text-white/90">
+                            <svg class="w-5 h-5 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Lead Capture + Email Sequences
+                        </li>
+                        <li class="flex items-center text-white/90">
+                            <svg class="w-5 h-5 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Appointment Reminders
+                        </li>
+                        <li class="flex items-center text-white/90">
+                            <svg class="w-5 h-5 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            CRM Integration
+                        </li>
+                        <li class="flex items-center text-white/90">
+                            <svg class="w-5 h-5 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Training + Documentation
+                        </li>
+                        <li class="flex items-center text-white/90">
+                            <svg class="w-5 h-5 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            14-Day Support
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block w-full text-center bg-white text-primary py-3 rounded-full font-medium hover:bg-gray-100 transition">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Premium -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover">
+                    <div class="text-sm font-medium text-gray-500 mb-2">PREMIUM</div>
+                    <div class="text-4xl font-bold mb-2">$1,497</div>
+                    <div class="text-gray-500 text-sm mb-6">One-time payment</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            5 Automations
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Full Suite Automation
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Custom Dashboard
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Priority Support
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            30-Day Support
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            1 Free Automation/Month
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block w-full text-center border-2 border-primary text-primary py-3 rounded-full font-medium hover:bg-primary hover:text-white transition">
+                        Get Started
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Retainer -->
+            <div class="mt-12 max-w-3xl mx-auto bg-gray-900 text-white p-8 rounded-2xl">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Monthly Retainer</h3>
+                        <p class="text-gray-400">Ongoing maintenance + 2 new automations/month</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold">$297<span class="text-lg text-gray-400">/mo</span></div>
+                        <a href="#contact" class="inline-block mt-4 bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-secondary transition">
+                            Subscribe
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold mb-4">Calculate Your ROI</h2>
+                    <p class="text-gray-600">See how much time and money automation saves you.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="hours-input">Hours spent on manual tasks per week</label>
+                            <input type="range" id="hours-input" min="5" max="40" value="15" class="w-full accent-primary">
+                            <div class="text-right text-primary font-bold" id="hours-display">15 hours</div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="rate-input">Your hourly rate ($)</label>
+                            <input type="range" id="rate-input" min="20" max="200" value="50" class="w-full accent-primary">
+                            <div class="text-right text-primary font-bold" id="rate-display">$50/hour</div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-8 text-white text-center">
+                        <h3 class="text-lg font-medium mb-2 text-white/80">You Could Save</h3>
+                        <div class="text-5xl font-extrabold mb-2" id="savings-display">$3,000</div>
+                        <div class="text-white/80">per month</div>
+                        <div class="mt-6 pt-6 border-t border-white/20">
+                            <div class="text-2xl font-bold" id="annual-display">$36,000</div>
+                            <div class="text-white/80 text-sm">per year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Clients Say</h2>
+                <p class="text-gray-600">Real results from real businesses.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"We were spending 10 hours a week on data entry. Now it's fully automated. Best investment we've made."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">JD</div>
+                        <div class="ml-3">
+                            <div class="font-semibold">John Davis</div>
+                            <div class="text-sm text-gray-500">Davis Dental Clinic</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Our no-show rate dropped from 30% to 5% with the appointment reminder system. Incredible ROI."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center text-accent font-bold">SM</div>
+                        <div class="ml-3">
+                            <div class="font-semibold">Sarah Miller</div>
+                            <div class="text-sm text-gray-500">Miller Law Firm</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">★★★★★</div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"The email follow-up sequence recovered 25% of our cold leads. Pays for itself in one week."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary font-bold">MJ</div>
+                        <div class="ml-3">
+                            <div class="font-semibold">Mike Johnson</div>
+                            <div class="text-sm text-gray-500">Johnson Real Estate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+            </div>
+            <div class="space-y-4">
+                
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left flex justify-between items-center">
+                        <span class="font-semibold text-lg">How long does it take to build an automation?</span>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                        Most automations are built within 3-7 days. Simple automations (like lead capture) take 1-2 days. Complex multi-step workflows take 5-7 days. We'll give you an exact timeline during our consultation.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left flex justify-between items-center">
+                        <span class="font-semibold text-lg">Do I need to know coding?</span>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                        No! We build everything for you. You'll receive simple training on how to manage your automations. Most clients can handle basic edits after a 15-minute training session.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left flex justify-between items-center">
+                        <span class="font-semibold text-lg">What tools do you use?</span>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                        We use free or low-cost tools like Zapier, n8n (self-hosted), Google Sheets, and Python scripts. Most automations run on free tiers with no monthly cost to you.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left flex justify-between items-center">
+                        <span class="font-semibold text-lg">What if something breaks?</span>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                        All packages include 7-30 days of support. We fix any issues at no extra cost. For ongoing support, our monthly retainer ($297/month) includes maintenance and new automations.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left flex justify-between items-center">
+                        <span class="font-semibold text-lg">Is there a money-back guarantee?</span>
+                        <svg class="w-5 h-5 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-gray-600">
+                        Yes! If you're not satisfied with the first draft, we'll revise it until you're happy. If we can't deliver what we promised, you get a full refund. No questions asked.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 text-center text-white">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Automate Your Business?</h2>
+            <p class="text-xl text-white/90 mb-10">Book a free 15-minute consultation. No pitch. Just advice on what you can automate.</p>
+            <a href="#contact" class="inline-block bg-white text-primary px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition shadow-lg">
+                Book Free Consultation →
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Talk</h2>
+                <p class="text-gray-600">Fill out the form below and we'll get back to you within 24 hours.</p>
+            </div>
+            <form id="contact-form" class="bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-gray-100">
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="index-your-name">Your Name *</label>
+                        <input type="text" name="name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition" id="index-your-name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="index-email-address">Email Address *</label>
+                        <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition" id="index-email-address">
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="index-business-name">Business Name</label>
+                        <input type="text" name="business" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition" id="index-business-name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="index-phone">Phone</label>
+                        <input type="tel" name="phone" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition" id="index-phone">
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="index-what-do-you-want-to-automate">What do you want to automate? *</label>
+                    <select name="service" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition" id="index-what-do-you-want-to-automate">
+                        <option value="">Select a service...</option>
+                        <option value="lead-capture">Lead Capture</option>
+                        <option value="email-sequence">Email Follow-up Sequences</option>
+                        <option value="appointment">Appointment Booking & Reminders</option>
+                        <option value="invoice">Invoice & Payment Automation</option>
+                        <option value="social-media">Social Media Scheduling</option>
+                        <option value="custom">Custom Automation</option>
+                        <option value="not-sure">Not sure yet (help me figure it out)</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="index-tell-us-about-your-business-and-pa">Tell us about your business and pain points</label>
+                    <textarea name="message" rows="4" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition resize-none" placeholder="What tasks waste your time? What tools do you use?" id="index-tell-us-about-your-business-and-pa"></textarea>
+                </div>
+                <button type="submit" class="w-full gradient-bg text-white py-4 rounded-full font-semibold text-lg hover:opacity-90 transition shadow-lg">
+                    Send Message
+                </button>
+            </form>
+            <!-- Was a green "✓ Thanks! We'll get back to you within 24 hours." box
+                 that appeared whether or not anything happened. The panel below is
+                 filled by js/enquiry.js and says only what this page can promise. -->
+            <div id="contact-sent" class="hidden mt-6 gradient-bg text-white rounded-2xl p-8 text-center"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">⚡ AutoFlow</div>
+                    <p class="text-gray-400 text-sm">Helping small businesses save time with custom automation.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="services/lead-capture.html" class="hover:text-white transition">Lead Capture</a></li>
+                        <li><a href="services/email-automation.html" class="hover:text-white transition">Email Automation</a></li>
+                        <li><a href="services/appointment-booking.html" class="hover:text-white transition">Appointment Booking</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Invoice Automation</a></li>
+                        <li><a href="services/ai-chatbot.html" class="hover:text-white transition">AI Chatbot</a></li>
+                        <li><a href="services/multi-channel.html" class="hover:text-white transition">Multi-Channel</a></li>
+                        <li><a href="services/waitlist-builder.html" class="hover:text-white transition">Waitlist Builder</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Hub Services</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="services/ai-chatbot.html" class="hover:text-white transition">AI Chatbot</a></li>
+                        <li><a href="services/multi-channel.html" class="hover:text-white transition">Multi-Channel</a></li>
+                        <li><a href="services/waitlist-builder.html" class="hover:text-white transition">Waitlist Builder</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="case-studies.html" class="hover:text-white transition">Case Studies</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="terms.html" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="booking.html" class="hover:text-white transition">Book a Call</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+                © 2026 AutoFlow. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/enquiry.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
