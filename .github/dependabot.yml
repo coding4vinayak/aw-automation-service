@@ -1,9 +1,10 @@
 version: 2
 updates:
-  - package-ecosystem: pip
-    directory: "/"
-    schedule: { interval: weekly, day: monday }
-    open-pull-requests-limit: 5
+  # No pip entry on purpose: the service is stdlib-only (serve.py is
+  # ThreadingHTTPServer; scripts and templates use json/dataclasses/urllib/
+  # smtplib/...) and there is no requirements.txt or pyproject.toml for an
+  # updater to read — pip updates failed every scheduled run on the missing
+  # manifest.
   - package-ecosystem: github-actions
     directory: "/"
     schedule: { interval: weekly, day: monday }
